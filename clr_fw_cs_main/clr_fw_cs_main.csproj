@@ -34,6 +34,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +50,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\clr_fs_lib\clr_fs_lib.fsproj">
+      <Project>{f51f0294-124a-4218-9c67-5211a38a25cb}</Project>
+      <Name>clr_fs_lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\clr_fw_cs_lib\clr_fw_cs_lib.csproj">
+      <Project>{8c607638-f22f-40be-a241-e069b057f0be}</Project>
+      <Name>clr_fw_cs_lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
