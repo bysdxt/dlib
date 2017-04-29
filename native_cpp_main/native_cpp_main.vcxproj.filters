@@ -24,6 +24,18 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="LimitSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="qMutex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GetTypeByValue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="choose_type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
