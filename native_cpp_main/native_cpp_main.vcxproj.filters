@@ -36,6 +36,15 @@
     <ClInclude Include="choose_type.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="type_checker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ex_type_traits.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dlib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

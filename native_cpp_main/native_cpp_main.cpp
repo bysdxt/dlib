@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 #include "choose_type.h"
+#include "type_checker.h"
+#include "dlib.h"
 template <bool test, size_t size, class T, template<size_t> class Tp>
 struct __choose_type_by_size_step;
 template <size_t size, class T, template<size_t> class Tp>
@@ -35,15 +37,19 @@ template <size_t size>
 using Int = choose_type_by_size<size, signed __int8, signed __int16, signed __int32, signed __int64>;
 template <size_t size>
 using Float = choose_type_by_size<size, float, double, long double>;
-
+using namespace dlib;
+using namespace type_checker;
 template <size_t size>
-using SInt = choose_type<signed __int8, signed __int16, signed __int32, signed __int64, void>::by<type_size<size>::template tester>;
+using SInt = choose_type<signed __int8, signed __int16, signed __int32, signed __int64>::by<type_size<size>::template is_equal>;
+template <unsigned long long size>
+using BB = choose_type<unsigned __int8, unsigned __int16, unsigned __int32, unsigned __int64>::by<type_max_value<size>::template is_enough>;
 int main()
 {
     UInt<2> a = 0;
     Int<4> b = 0;
     Float<8> c = 0;
-    SInt<4> d = 0;
+    SInt<8> d = 0;
+    BB<256> e = 0;
     return 0;
 }
 
