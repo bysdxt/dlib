@@ -45,6 +45,12 @@
     <ClInclude Include="dlib.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="gc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

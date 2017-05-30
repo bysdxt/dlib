@@ -17,8 +17,7 @@ namespace dlib {
             using Result = typename N::template by<tester>;
         };
         template <class T, template <class> class tester>
-        struct choose<::std::false_type, T, choose_type<>, tester> {
-            static_assert(sizeof(T) < 0, "not find");
+        struct choose<::std::false_type, T, choose_type<>, tester> : error_not_find<T> {
         };
     }
     template <class T, class ... Ts>
