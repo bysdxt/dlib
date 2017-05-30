@@ -72,9 +72,7 @@ private:
                     //  good
                     slot[index] = ::std::move(value);
                     ::std::atomic_thread_fence(::std::memory_order::memory_order_seq_cst);
-                    do {
-                        mark = outMark.load();
-                    } while (!outMark.compare_exchange_strong(mark, mark | one));   //  `one` means that slot[index] is empty(before this func called), and outMark must be zero(in index bit), just set it
+                    outMark.fetch_or(one);  //  `one` means that slot[index] is empty(before this func called), and outMark must be zero(in index bit), just set it
                     saved_index = index;
                     return true;
                 } else
@@ -92,9 +90,7 @@ private:
                     //  good
                     value = ::std::move(slot[index]);
                     ::std::atomic_thread_fence(::std::memory_order::memory_order_seq_cst);
-                    do {
-                        mark = inMark.load();
-                    } while (!inMark.compare_exchange_strong(mark, mark | one));
+                    inMark.fetch_or(one);   //  same as `save`
                     return true;
                 } else
                     one = param::findOne(mark = outMark.load(), index);
@@ -108,9 +104,7 @@ private:
                 if (outMark.compare_exchange_strong(mark, mark ^ one)) {
                     value = ::std::move(slot[index]);
                     ::std::atomic_thread_fence(::std::memory_order::memory_order_seq_cst);
-                    do {
-                        mark = inMark.load();
-                    } while (!inMark.compare_exchange_strong(mark, mark | one));
+                    inMark.fetch_or(one);   //  same as `save`
                     return true;
                 } else
                     mark = outMark.load();
@@ -118,5 +112,7 @@ private:
             return false;
         }
     };
+    struct Node2 {
 
+    };
 };
